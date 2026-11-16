@@ -1,6 +1,8 @@
-# 나컴퍼니 홈페이지 — 따라 하기 안내서
+# 플레이스팀 홈페이지 — 이전 운영 안내서
 
-주식회사 나컴퍼니 회사 홈페이지(playsteam.co.kr) 파일입니다.
+> 이전 Git 기반 운영 방식의 참고 문서입니다. 현재 Supabase 연동 및 배포 방법은 루트 README.md를 참고하세요.
+
+플레이스팀 회사 홈페이지(playsteam.co.kr) 파일입니다.
 기사는 관리자 화면(playsteam.co.kr/admin)에서 쓰고, 저장하면 몇 분 뒤 홈페이지에 자동으로 나타납니다.
 
 ---
@@ -11,7 +13,7 @@
 
 1. github.com에 로그인합니다.
 2. 오른쪽 위 **＋** → **New repository**를 누릅니다.
-3. Repository name에 `nacompany-site`를 적습니다.
+3. Repository name에 `playsteam_webstie`를 적습니다.
 4. **Public**을 고릅니다.
    - 무료로 사이트를 공개하려면 Public이어야 합니다.
    - 사이트 파일이 공개되지만, 비밀번호나 개인정보는 들어 있지 않으니 괜찮습니다.
@@ -35,9 +37,9 @@ Claude가 직접 올려 드릴 수도 있습니다. 직접 하실 때는:
    ```
    repo: 깃허브아이디/저장소이름
    ```
-4. 실제 값으로 바꿉니다. 예: 깃허브 아이디가 `nacompany`라면
+4. 실제 값으로 바꿉니다. 예: 깃허브 아이디가 `sonjh-github`라면
    ```
-   repo: nacompany/nacompany-site
+   repo: sonjh-github/playsteam_webstie
    ```
 5. **Commit changes**를 누릅니다.
 
@@ -74,16 +76,16 @@ Claude가 직접 올려 드릴 수도 있습니다. 직접 하실 때는:
 1. 깃허브 오른쪽 위 프로필 사진 → **Settings**
 2. 왼쪽 맨 아래 **Developer settings** → **Personal access tokens** → **Fine-grained tokens** → **Generate new token**
 3. 이렇게 채웁니다.
-   - Token name: `나컴퍼니 관리자`
+   - Token name: `플레이스팀 관리자`
    - Expiration: 원하는 기간 (예: 1년. 기간이 끝나면 새로 만들면 됩니다)
-   - Repository access: **Only select repositories** → `nacompany-site`
+   - Repository access: **Only select repositories** → `playsteam_webstie`
    - Permissions → Repository permissions → **Contents**: **Read and write**
 4. **Generate token**을 누르고 나온 긴 글자를 복사해 **안전한 곳**(비밀번호 관리 앱 등)에 보관합니다. 이 화면을 닫으면 다시 볼 수 없습니다.
 5. **이 토큰은 아무에게도 보내지 마세요.** Claude에게도 보내실 필요가 없습니다.
 
 ### 7단계. 관리자 화면 들어가기
 
-1. `playsteam.co.kr/admin`에 들어갑니다. (주소 연결 전이라면 `깃허브아이디.github.io/nacompany-site/admin`)
+1. `playsteam.co.kr/admin`에 들어갑니다. (주소 연결 전이라면 `깃허브아이디.github.io/playsteam_webstie/admin`)
 2. **토큰으로 로그인(Sign In with Token)**을 누르고 6단계에서 만든 토큰을 붙여 넣습니다.
 3. 왼쪽에 **PLAYSTEAM 기사**와 **사이트 관리**가 보이면 성공입니다.
 
@@ -111,7 +113,7 @@ Claude가 직접 올려 드릴 수도 있습니다. 직접 하실 때는:
 ### 1면에 올리기 (첫 화면 맨 위)
 
 1. 기사에서 **1면에 올리기**를 켭니다.
-2. **1면 고정 마지막 날**을 고릅니다. 그날이 지나면 저절로 내려가고, '나컴퍼니의 생각'이 다시 맨 위로 올라옵니다.
+2. **1면 고정 마지막 날**을 고릅니다. 그날이 지나면 저절로 내려가고, '플레이스팀의 생각'이 다시 맨 위로 올라옵니다.
 3. 1면에 올라간 기사는 아래 기사 목록에서는 빠지고, 내려가면 다시 목록으로 돌아옵니다.
 
 ### 소식지 한 호로 묶기
@@ -124,7 +126,7 @@ Claude가 직접 올려 드릴 수도 있습니다. 직접 하실 때는:
 
 관리자 화면 → 사이트 관리 → **첫 화면 정보 칸**에서 '교육 의뢰', '구독' 같은 색 칸을 고칩니다. **몇 번째 기사 앞에 넣을지** 숫자만 정하면 됩니다.
 
-### '나컴퍼니의 생각' 고치기
+### '플레이스팀의 생각' 고치기
 
 PLAYSTEAM 기사 목록의 **묻는 힘, 판단하는 힘, 해내는 힘** 기사가 철학 글입니다. 사진과 글을 바꾸면 첫 화면, 회사 소개 페이지에 함께 반영됩니다.
 

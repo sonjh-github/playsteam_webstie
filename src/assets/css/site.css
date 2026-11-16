@@ -1,4 +1,4 @@
-/* 나컴퍼니 사이트 스타일 — 웹진형(칸 너비는 같고 사진 세로 길이만 다른 벽돌 쌓기)
+/* 플레이스팀 사이트 스타일 — 웹진형(칸 너비는 같고 사진 세로 길이만 다른 벽돌 쌓기)
    색과 글꼴은 :root 에서만 바꾸면 사이트 전체에 적용됩니다. */
 :root{
   --paper:#fbfaf6; --sheet:#ffffff; --ink:#16171d; --muted:#6a6862; --rule:#e2ded4;
@@ -402,7 +402,7 @@ img{display:block;max-width:100%}
 .watch-list[data-cols="1"]{--wc:1}
 .watch-list[data-cols="1"] .wt+.wt{border-top:1px solid var(--rule)}
 
-/* 변화 읽기: 제목과 소식 사이는 점선(한 묶음), 아래 '나컴퍼니가 한 일' 위는 실선 */
+/* 변화 읽기: 제목과 소식 사이는 점선(한 묶음), 아래 '플레이스팀이 한 일' 위는 실선 */
 .watch-list{border-top:1.5px dashed var(--ink);border-bottom:1px solid var(--ink)}
 /* 지난 호 표지: 목록 맨 위·맨 아래만 실선, 사이는 점선 */
 .iss li{border-bottom:1px dashed rgba(22,23,29,.45)}

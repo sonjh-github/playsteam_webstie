@@ -1,6 +1,6 @@
 # PLAYSTEAM 홈페이지
 
-기존 `seoosea/nacompany-site`의 Eleventy 3.1.2 화면과 템플릿을 옮긴 홈페이지입니다. 콘텐츠 원본은 Supabase `roota-content` 프로젝트의 `homepage` 스키마입니다.
+Eleventy 3.1.2 기반의 플레이스팀 홈페이지입니다. 콘텐츠 원본은 Supabase `roota-content` 프로젝트의 `homepage` 스키마입니다.
 
 ## 실행
 

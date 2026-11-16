@@ -1,7 +1,7 @@
 {
   "name": "playsteam-website",
   "version": "1.0.0",
-  "description": "주식회사 나컴퍼니 회사 홈페이지",
+  "description": "플레이스팀 회사 홈페이지",
   "scripts": {
     "sync": "node scripts/sync-homepage.mjs",
     "build": "npm run sync && eleventy",

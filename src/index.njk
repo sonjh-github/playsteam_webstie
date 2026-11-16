@@ -9,7 +9,7 @@ permalink: /
   <a class="hero-in" href="/about/">
     {% if about and (about.data.block | firstPhoto) %}<span class="ph"><img src="{{ about.data.block | firstPhoto }}" alt="{{ about.data.block.photos[0].alt or '' }}"></span>{% endif %}
     <span class="tx">
-      <span class="badge">나컴퍼니의 생각</span>
+      <span class="badge">플레이스팀의 생각</span>
       <h1>{{ site.slogan_line1 }}<br>{{ site.slogan_line2 }}</h1>
       <p>{{ site.intro }}</p>
       <span class="meta">회사 소개 →</span>
@@ -65,7 +65,7 @@ permalink: /
 {%- set list = collections.articles | homeOnly | without(pin) | latestPickOnly | companyFirst -%}
 {%- set nCo = list | companyCount -%}
 <section class="feed"><div class="wrap">
-  <div class="feed-h"><h2>나컴퍼니가 한 일</h2><span class="mono">기관 교육 · 교사 연수 · 행사 운영</span></div>
+  <div class="feed-h"><h2>플레이스팀이 한 일</h2><span class="mono">기관 교육 · 교사 연수 · 행사 운영</span></div>
   <div class="wall" data-wall>
     {%- for a in list | head(nCo) -%}
       {%- set ai = loop.index -%}{%- set i = loop.index0 -%}

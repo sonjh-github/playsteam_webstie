@@ -1,4 +1,4 @@
-// 나컴퍼니 사이트 빌드 설정
+// 플레이스팀 사이트 빌드 설정
 // src 폴더의 내용을 읽어 _site 폴더에 완성된 웹페이지를 만듭니다.
 import { EleventyHtmlBasePlugin } from '@11ty/eleventy';
 

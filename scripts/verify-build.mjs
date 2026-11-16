@@ -21,7 +21,7 @@ const files = await walk(output);
 const htmlFiles = files.filter(file => file.endsWith('.html'));
 for (const file of htmlFiles) {
   const html = await readFile(file, 'utf8');
-  assert(!html.includes('seoosea/nacompany-site'), `Old repository reference: ${file}`);
+  assert(!/나\s*컴퍼니|na\s*company|nacompany/i.test(html), `Outdated brand in built page: ${file}`);
   for (const match of html.matchAll(/(?:href|src)="(\/[^"\s]*)"/g)) {
     const url = match[1];
     if (url.startsWith('//')) continue;
