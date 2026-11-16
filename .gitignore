@@ -1,0 +1,13 @@
+node_modules/
+_site/
+.cache/
+.env
+.env.*
+!.env.example
+.DS_Store
+
+# Generated exclusively from Supabase on each build.
+src/_data/*.json
+src/playsteam/articles/*.md
+src/assets/img/
+src/assets/uploads/

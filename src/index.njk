@@ -1,0 +1,87 @@
+---
+layout: base.njk
+permalink: /
+---
+{%- set pin = collections.articles | currentPin -%}
+{%- set about = collections.articles | aboutArticle -%}
+{%- macro aboutHero(hidden) -%}
+<section class="hero phil" data-hero-about{% if hidden %} hidden{% endif %}><div class="wrap">
+  <a class="hero-in" href="/about/">
+    {% if about and (about.data.block | firstPhoto) %}<span class="ph"><img src="{{ about.data.block | firstPhoto }}" alt="{{ about.data.block.photos[0].alt or '' }}"></span>{% endif %}
+    <span class="tx">
+      <span class="badge">나컴퍼니의 생각</span>
+      <h1>{{ site.slogan_line1 }}<br>{{ site.slogan_line2 }}</h1>
+      <p>{{ site.intro }}</p>
+      <span class="meta">회사 소개 →</span>
+    </span>
+  </a>
+</div></section>
+{%- endmacro -%}
+
+{% if pin %}
+{%- set pb = pin.data.block or {} -%}
+<section class="hero" data-hero-pin data-until="{{ pin.data.pin_until | isoDate if pin.data.pin_until else '' }}"><div class="wrap">
+  <a class="hero-in" href="{{ pin.url }}">
+    {% if pb | firstPhoto %}<span class="ph"><img src="{{ pb | firstPhoto }}" alt="{{ pb.photos[0].alt or '' }}" style="object-position:center {{ pb | firstFocus }}"></span>{% endif %}
+    <span class="tx">
+      <span class="badge">지금 소식</span>
+      <h1>{{ pin.data.title }}</h1>
+      {% if pin.data.summary %}<p>{{ pin.data.summary }}</p>{% endif %}
+      <span class="meta">{{ pin.data.region }}{% if pin.data.region %} · {% endif %}{{ pin.date | dotDate }}</span>
+    </span>
+  </a>
+</div></section>
+{{ aboutHero(true) }}
+<div class="think" data-think><div class="wrap">
+  <p>로봇·코딩·AI는 도구일 뿐입니다. 우리는 <em>묻는 힘, 판단하는 힘, 해내는 힘</em>을 기릅니다.</p>
+  <a href="/about/">회사 소개 →</a>
+</div></div>
+{% else %}
+{{ aboutHero(false) }}
+{% endif %}
+
+{%- set tw = trends.items | latestTrends(trends.count or 2) -%}
+{% if tw.length %}
+<section class="watch" aria-label="{{ trends.title }}"><div class="wrap">
+  <div class="watch-h">
+    <h2><span class="dot"></span>{{ trends.title }}</h2>
+    {% if trends.intro %}<p>{{ trends.intro }}</p>{% endif %}
+  </div>
+  <div class="watch-list n{{ tw.length }}" data-watch>
+    {% for t in tw %}
+    <a class="wt{% if t.quote %} has-q{% endif %}" href="{{ t.url }}" target="_blank" rel="noopener">
+      {% if t.image %}<span class="wt-img"><img src="{{ t.image }}" alt="" loading="lazy"></span>{% endif %}
+      <span class="wt-k"><b>{{ t.kind }}</b>{{ t.date | replace("-", ".") }}</span>
+      {% if t.quote %}<blockquote>“{{ t.quote }}”</blockquote>{% if t.who %}<span class="wt-who">— {{ t.who }}</span>{% endif %}{% endif %}
+      <h3>{{ t.title }}</h3>
+      {% if t.text %}<p>{{ t.text }}</p>{% endif %}
+      <span class="wt-src">{{ t.source }} ↗</span>
+    </a>
+    {% endfor %}
+  </div>
+</div></section>
+{% endif %}
+
+{%- set list = collections.articles | homeOnly | without(pin) | latestPickOnly | companyFirst -%}
+{%- set nCo = list | companyCount -%}
+<section class="feed"><div class="wrap">
+  <div class="feed-h"><h2>나컴퍼니가 한 일</h2><span class="mono">기관 교육 · 교사 연수 · 행사 운영</span></div>
+  <div class="wall" data-wall>
+    {%- for a in list | head(nCo) -%}
+      {%- set ai = loop.index -%}{%- set i = loop.index0 -%}
+      {%- for bx in boxes.items -%}{%- if bx.position == ai -%}{% include "box.njk" %}{%- endif -%}{%- endfor -%}
+      {%- set hideAttr = ('data-about-brick' + ('' if pin else ' hidden')) if a.data.kind == 'about' else '' -%}
+      {% include "brick.njk" %}
+    {%- endfor -%}
+    {%- for bx in boxes.items -%}{%- if bx.position > nCo -%}{% include "box.njk" %}{%- endif -%}{%- endfor -%}
+    {%- if pin -%}{%- set a = pin -%}{%- set i = 0 -%}{%- set hideAttr = 'hidden data-pin-brick' -%}{% include "brick.njk" %}{%- endif -%}
+  </div>
+</div></section>
+{% if list.length > nCo %}
+<section class="feed academy"><div class="wrap">
+  <div class="feed-h"><h2>교육 현장 · 울산 로봇코딩 아카데미</h2>{% if site.academy_url %}<a class="mono" href="{{ site.academy_url }}" target="_blank" rel="noopener">학원 사이트 ↗</a>{% else %}<span class="mono">수업 · 대회 · 학원 소식</span>{% endif %}</div>
+  <div class="wall" data-wall>
+    {%- for a in list.slice(nCo) -%}{%- set i = loop.index0 + 2 -%}{%- set hideAttr = '' -%}{% include "brick.njk" %}{%- endfor -%}
+  </div>
+</div></section>
+{% endif %}

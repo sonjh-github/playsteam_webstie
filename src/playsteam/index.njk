@@ -1,0 +1,28 @@
+---
+layout: base.njk
+title: PLAYSTEAM 지난 호
+description: 주식회사 나컴퍼니가 1년에 네 번 펴내는 교육 소식지 PLAYSTEAM. 호마다 실린 기사를 모았습니다.
+permalink: /playsteam/
+---
+<section class="page"><div class="wrap">
+  <header class="page-h"><span class="badge">PLAYSTEAM</span><h1>지난 호</h1><p>1년에 네 번, 그동안 올린 기사를 골라 한 호로 묶어 펴냅니다.</p></header>
+  {% if collections.issues.length %}
+  <div class="issues">
+    {% for g in collections.issues %}
+    {%- set lead = (g.items | byCorner("What's New") | featureFirst)[0] or g.items[0] -%}
+    {%- set c = lead.data.block | firstPhoto -%}
+    <a class="iss" href="/playsteam/{{ g.slug }}/">
+      <span class="iss-strip"><span>NA COMPANY — 계간 소식지</span><span>{{ g.issue | upper }}</span></span>
+      <span class="iss-mast">PLAYSTEAM</span>
+      <span class="iss-img">{% if c %}<img src="{{ c }}" alt="" loading="lazy">{% endif %}</span>
+      <span class="iss-lead">{{ lead.data.title }}</span>
+      <ol>{% for a in g.items | without(lead) | head(5) %}<li><span>{{ a.data.corner or a.data.category }}</span>{{ a.data.title }}</li>{% endfor %}</ol>
+      <span class="iss-foot"><span>기사 {{ g.items.length }}편</span><span>이 호 읽기 →</span></span>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="empty">첫 호를 준비하고 있습니다.</p>
+  {% endif %}
+  {% if site.newsletter_url %}<p class="sub-line"><a class="btn" href="{{ site.newsletter_url }}" target="_blank" rel="noopener">새 호를 메일로 받아 보기 →</a></p>{% endif %}
+</div></section>

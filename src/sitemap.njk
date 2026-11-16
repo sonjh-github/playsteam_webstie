@@ -1,0 +1,13 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+{%- set canonicalBase = (build.url or site.url) + build.pathPrefix -%}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{{ canonicalBase }}/</loc></url>
+  <url><loc>{{ canonicalBase }}/playsteam/</loc></url>
+  {%- for a in collections.articles %}
+  <url><loc>{{ canonicalBase }}{{ a.url }}</loc><lastmod>{{ a.date | isoDate }}</lastmod></url>
+  {%- endfor %}
+</urlset>

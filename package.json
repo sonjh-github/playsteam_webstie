@@ -1,0 +1,17 @@
+{
+  "name": "playsteam-website",
+  "version": "1.0.0",
+  "description": "주식회사 나컴퍼니 회사 홈페이지",
+  "scripts": {
+    "sync": "node scripts/sync-homepage.mjs",
+    "build": "npm run sync && eleventy",
+    "start": "npm run sync && eleventy --serve",
+    "test": "node --test",
+    "verify": "node scripts/verify-build.mjs"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.2"
+  },
+  "private": true,
+  "type": "module"
+}
